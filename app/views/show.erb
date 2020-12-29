@@ -1,0 +1,29 @@
+
+<%# show page displays the article's title %>
+<%# show page displays the article's content %>
+
+    <label for="title"><%= @article.try(:title) %></label>
+    <input id="title" type="text" name="title">
+
+    <label for="content"><%= @article.try(:content) %></label>
+    <textarea id="content" type="text" name="content"></textarea>
+
+
+<%# this way might be better since it will display some error correction/validation IF there isn't a title or content.  %>
+    <label for="title"><%= @article.title ? @article.title : "No title listed" %></label>
+    <input id="title" type="text" name="title">
+
+    <label for="title"><%= @article.content ? @article.content : "No content available" %></label>
+    <textarea id="content" type="text" name="content"></textarea>
+
+<%# this way might be even easier! basically: list the title if it's there OR if not, error correct. %>
+    <label for="title"><%= @article.title || "No title listed" %></label>
+    <input id="title" type="text" name="title">
+
+    <label for="title"><%= @article.content || "No content available" %></label>
+    <textarea id="content" type="text" name="content"></textarea>
+
+<form method="post" action="/articles/<%= @article.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete!">
+</form>

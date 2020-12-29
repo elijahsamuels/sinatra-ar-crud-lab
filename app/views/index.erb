@@ -1,0 +1,4 @@
+<h2>Articles:</h2>
+<% @articles.each.with_index(1) do |article, i| %>
+     <a href="/articles/<%= article.id %>"> <%= "#{i}. " %><%= article.title %> </a> <br>
+<% end %>
